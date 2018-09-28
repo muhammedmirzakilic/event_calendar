@@ -1,0 +1,25 @@
+<div id="homeSection" class="col-md-12" style="background-image:url('../img/items.png'); min-height:500px;">
+
+</div>
+<h1>Lorem ipsum dolor amet sit</h1>
+<p style="text-aling:justify">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla felis magna, venenatis sed congue et, venenatis et lectus. Duis mattis lorem ut quam dignissim, sit amet fermentum purus rhoncus. Mauris eu augue augue. Praesent consectetur facilisis libero, et malesuada velit maximus vel. Pellentesque eros sapien, egestas scelerisque sapien eu, consectetur mollis velit. Phasellus lacinia dui elit, at rhoncus purus condimentum vel. Nullam rhoncus nunc non sem rutrum tempus. Nam rutrum lacinia odio sit amet euismod. Pellentesque molestie luctus eros, luctus varius metus viverra id.
+
+  Praesent ac efficitur tellus, eget ultrices massa. Praesent accumsan quam a leo sagittis, at placerat est pharetra. Nullam tempus consectetur augue at ornare. Sed viverra arcu enim, nec pellentesque tellus imperdiet sed. Pellentesque purus leo, sagittis feugiat nibh nec, tempor venenatis ex. Nam et tellus vitae orci venenatis lobortis id porttitor nisi. Praesent fringilla quam eget sollicitudin feugiat. Fusce consequat turpis at justo lobortis, vel fringilla ante malesuada. Duis maximus diam quis dui venenatis vulputate sed eget dolor.
+
+
+</p>
+<p data-bind="text:firstText"></p>
+
+<script>
+var myViewModel = {
+    personName: 'Bob',
+    personAge: 123,
+    firstText: "Çalışıyor be aslanlar gibi"
+};
+
+
+
+ko.applyBindings(myViewModel,document.getElementById("homeSection"));
+
+</script>

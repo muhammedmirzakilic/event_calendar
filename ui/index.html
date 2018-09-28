@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-language" content="tr" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/sammy.min.js" type="text/javascript"></script>
+  <script src="js/sammy.template.js" type="text/javascript"></script>
+  <script type="text/javascript" src="js/knockout-3.4.2.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <script src="app.js"></script>
+</head>
+
+<body>
+
+  <nav class="col-md-12 navbar navbar-default" id="navbarSection">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active" data-bind="visible: isLogged"><a href="#/">Home <span class="sr-only">(current)</span></a></li>
+          <li data-bind="visible: isLogged"><a href="#/events">Events</a></li>
+          <form class="navbar-form navbar-left" role="search" data-bind="visible: isLogged">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search a user">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+          <li data-bind="visible: isLogged"><a href="#/profile">Profile</a></li>
+          <li data-bind="visible: isLogged != true"><a href="#/sign">Account</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-container">
+    <div class="main wrapper clearfix">
+      <div id="app">
+      </div>
+
+    </div>
+  </div>
+  <div class="footer-container">
+    <footer class="wrapper">
+      <h3>2017. Lorem ipsum dolor amet sit</h3>
+    </footer>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+  var vm = new function() {
+    var self = this;
+    self.isLogged = ko.observable(false);
+    self.check = function() {
+      $.ajax({
+        url: "api/users/check",
+        type: "GET",
+        success: function(data, status) {
+          if (data == "true")
+            self.isLogged(true);
+          else
+            self.isLogged(false);
+        },
+        error: function(data, status) {
+        }
+      });
+    }
+  };
+  vm.check();
+  ko.applyBindings(vm,document.getElementById("navbarSection"));
+</script>
